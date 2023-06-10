@@ -1,0 +1,23 @@
+user:
+    user_id: int, primary_key, auto-increment
+    username: string, unique
+    password_hash: string
+    UNIQUE (user_id), (username)
+
+todo_lists:
+    list_id: int, primary_key, auto-increment
+    user_id: int, primary_key
+    title: string, not nullable, default “”
+    priority: enum{low, medium, high}, not nullable, default low
+    order: int, not nullable
+    UNIQUE(list_id)
+    
+tasks:
+    task_id: int, primary_key, auto-increment
+    list_id: int, foreign_key, not nullable
+    order: int, not nullable
+    title: string, not nullable, default “”
+    priority: enum{low, medium, high}, not nullable
+    super_task_id: int, foreign_key, nullable
+    done: bool, not nullable, default false
+    UNIQUE (task_id)
