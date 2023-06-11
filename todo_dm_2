@@ -1,0 +1,38 @@
+user:
+    username: string, unique
+    password_hash: string
+
+    created_at: timestamp
+    updated_at: timestamp
+
+    UNIQUE (username)
+
+todoLists:
+    id_list: int, primary_key, auto-increment
+    code: string, not nullable
+
+    username: string, foreign_key, not nullable
+    title: string, not nullable, default “”
+    priority: enum{low, medium, high}, not nullable, default low
+    order: int, not nullable
+
+    created_at: timestamp
+    updated_at: timestamp
+
+    UNIQUE (list_id), (code)
+    
+tasks:
+    id_task: int, primary_key, auto-increment
+    code: string, not nullable
+
+    id_list: int, foreign_key, not nullable
+    order: int, not nullable
+    title: string, not nullable, default “”
+    priority: enum{low, medium, high}, not nullable
+    id_parent_task: int, foreign_key, nullable
+    done: bool, not nullable, default false
+
+    created_at: timestamp
+    updated_at: timestamp
+
+    UNIQUE (task_id), (code)

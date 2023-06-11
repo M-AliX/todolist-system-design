@@ -13,3 +13,11 @@ We want to build a todo lists backend web service. to allow users to manage todo
 
 # Second Solution
 
+`todo_api_2.js` and `todo_dm_2` represent the second iteration of the solution to the problem
+
+General changes made:
+- POST, PUT, and DELETE requests now return the state as well (rather than just the entity)
+- Fixed `<table_name>_id` to `id_<table_name>` in DM
+- Renamed `super_task_id` to `parent_task_id` for clarity
+- Add `code` to DM and body of API calls for distributed systems
+- Renamed tables in DM to camelCase
